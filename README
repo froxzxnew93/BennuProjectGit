@@ -1,0 +1,70 @@
+
+-----------------------BASE DE DATOS-------
+
+1)Crear un modelo de base de datos que tenga las siguientes entidades
+
+  
+
+  El script de la base de datos esta en la siguiente direccion.
+
+  //Web Pages/ recursos / pruebabennu.sql
+
+---------------------------------------------------------------------------------------
+
+2) Escribe un archivo .sql que contenga las siguientes consultas
+
+
+
+  //Consulta que obtenga todos los profesores de un colegio ordenados por nombre.
+
+
+
+  select p.nombre,c.nombre
+
+  from t_profesor p
+
+    inner join t_colegio c    ON   p.id_colegio=c.id
+
+    ORDER BY c.nombre ASC;
+
+---------------------------------------------------------------------------------
+
+
+
+//Consulta que obtenga todos los alumnos con promedio rojo por asignatura.
+
+
+
+SELECT n.nota,al.nombre,asig.nombre
+
+from t_nota n 
+
+	inner join t_alumno al         on n.fk_id_alumno=al.id
+
+	INNER join t_asignatura asig   on n.fk_id_asignatura=asig.id
+
+where n.nota <=3.9
+
+	Order BY asig.nombre;
+
+----------------------------------------------------------------------------
+
+
+
+//Consulta que contenga el alumno con mejor nota por asignatura.
+
+
+
+SELECT MAX(n.nota),al.nombre,asig.nombre
+
+from t_nota n 
+
+	inner join t_alumno al         on n.fk_id_alumno=al.id
+
+	INNER join t_asignatura asig   on n.fk_id_asignatura=asig.id
+
+GROUP BY asig.nombre;
+
+--------------------------------------------------------------------------------------
+
+3)Se utilizo HIBERNATE 4.3.1, SERVLET y JSP.
